@@ -1,15 +1,22 @@
 
 <!DOCTYPE html>
+
+{% load static %} <!-- allows calling of static tags -->
+
 <html>
 
 <head>
-<title>Rango</title>
+<title>Index</title>
+<link rel="stylesheet" href="{% static "css/blueprint/screen.css" %}" type="text/css" media="screen, projection"> <!-- css example -->
+<link rel="stylesheet" href="{% static "css/blueprint/print.css" %}" type="text/css" media="print"> <!-- css example -->
+<script src="{% static "js/jquery.js" %}"></script> <!-- js example -->
 </head>
 
 <body>
 <h1>Rango says...</h1>
 hello world! <strong>{{ boldmessage }}</strong><br />
 <a href="/mydbapp/about/">About</a><br />
+<img src="{% static "happy_face.jpg" %}" alt="Picture of happy face" />
 </body>
 
 </html>

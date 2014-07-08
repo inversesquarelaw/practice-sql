@@ -52,7 +52,7 @@ ROOT_URLCONF = 'FirstSite.urls'
 
 WSGI_APPLICATION = 'FirstSite.wsgi.application'
 
-# templates
+#added template stuff
 TEMPLATE_DIRS = {
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
@@ -94,3 +94,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#added static stuff
+PROJECT_PATH = '/home/user/code/python/practice-sql/FirstSite'
+STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
+STATICFILES_DIRS = (
+    STATIC_PATH,
+)
+
+#added media stuff
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media') #absolute path to media
