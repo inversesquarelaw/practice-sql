@@ -5,18 +5,42 @@
 
 <html>
 
-<head>
-<title>Index</title>
-<link rel="stylesheet" href="{% static "css/blueprint/screen.css" %}" type="text/css" media="screen, projection"> <!-- css example -->
-<link rel="stylesheet" href="{% static "css/blueprint/print.css" %}" type="text/css" media="print"> <!-- css example -->
-<script src="{% static "js/jquery.js" %}"></script> <!-- js example -->
-</head>
+    <head>
+        <title>Index</title>
+        <link rel="stylesheet" href="{% static "css/blueprint/screen.css" %}" type="text/css" media="screen, projection"> <!-- css example -->
+        <link rel="stylesheet" href="{% static "css/blueprint/print.css" %}" type="text/css" media="print"> <!-- css example -->
+        <script src="{% static "js/jquery.js" %}"></script> <!-- js example -->
+    </head>
 
-<body>
-<h1>Rango says...</h1>
-hello world! <strong>{{ boldmessage }}</strong><br />
-<a href="/mydbapp/about/">About</a><br />
-<img src="{% static "happy_face.jpg" %}" alt="Picture of happy face" />
-</body>
+    <body>
+        <h1>Simon says...</h1>
+        hello world! <strong>{{ boldmessage }}</strong><br />
+        <br />
+        <br />
+        <br />
+
+        {% if employees %}
+            <textarea rows='15' cols='80' readonly>
+Employee Number | First Name | Last Name | Gender
+{% for employee in employees %}
+{{ employee.emp_no }} {{ employee.first_name }} {{ employee.last_name }} {{ employee.gender }}
+{% endfor %}
+            </textarea>
+        {% else %}
+            <strong>There are no employees present.</strong>
+        {% endif %}
+
+        <br />
+        <br />
+        <br />
+
+        <a href="/mydbapp/add_employee/">Add a new employee</a>
+
+        <br />
+        <br />
+        <br />
+        <a href="/mydbapp/about/">About</a><br />
+        <img src="{% static "happy_face.jpg" %}" alt="Picture of happy face" /><br />
+    </body>
 
 </html>

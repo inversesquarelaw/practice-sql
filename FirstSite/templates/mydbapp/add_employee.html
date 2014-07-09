@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+<head>
+<title>My Title</title>
+<link rel="stylesheet" href="{% static "css/blueprint/screen.css" %}" type="text/css" media="screen, projection"> <!-- css example -->
+<link rel="stylesheet" href="{% static "css/blueprint/print.css" %}" type="text/css" media="print"> <!-- css example -->
+<script src="{% static "js/jquery.js" %}"></script> <!-- js example -->
+</head>
+
+<body>
+<h1>Add a Employee</h1>
+
+<form id="employee_form" method="post" action="/mydbapp/add_employee/">
+
+{% csrf_token %}
+{% for hidden in form.hidden_fields %}
+{{ hidden }}
+{% endfor %}
+
+{% for field in form.visible_fields %}
+{{ field.errors }}
+{{ field.help_text }}
+{{ field }} <br />
+{% endfor %}
+
+<input type="submit" name="submit" value="Create Employee" />
+</form>
+</body>
+
+</html>

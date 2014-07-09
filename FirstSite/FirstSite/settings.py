@@ -73,6 +73,22 @@ DATABASES = {
         'PASSWORD': 'password',
         'HOST': '127.0.0.1',
         'PORT': '',
+    },
+    'salaries': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'salaries',
+        'USER': 'mysqluser',
+        'PASSWORD': 'password',
+        'HOST': '127.0.0.1',
+        'PORT': '',
+    },
+    'departments': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'departments',
+        'USER': 'mysqluser',
+        'PASSWORD': 'password',
+        'HOST': '127.0.0.1',
+        'PORT': '',
     }
 }
 
