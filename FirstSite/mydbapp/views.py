@@ -60,21 +60,6 @@ def get_employee(request):
     query_data = Employees.objects.order_by('emp_no')[:10]
     context_dict = {'employees': query_data}
 
-    if request.method == 'POST':
-        form = EmployeeForm(request.POST)
-
-        #have we been provide with a valid form?
-        if form.is_valid():
-            query_data = Employees.objects.order_by('emp_no')[:10]
-
-            return get_employee(request)
-        else:
-            #the supplied form contained errors - just print them to the terminal
-            print form.errors
-    else:
-        #if the request was not a POST, display the form to enter details.
-        form = EmployeeForm
-
     return render_to_response('mydbapp/get_employee.html', context_dict, context)
 
 
