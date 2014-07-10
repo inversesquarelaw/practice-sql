@@ -13,9 +13,12 @@
 <body>
 <h1>Query an employee</h1>
 
-<form id="employee_form" method="post" action="/mydbapp/add_employee/">
-
+<form id="employee_query_form" method="post" action="/mydbapp/get_employee/">
+{% csrf_token %}            <!-- this is required when submitting forms! -->
+<!-- This code looks at sql table and for every column, it makes that text input area. This is not what we want for a sql query. It is for adding to the table.-->
+<!--
 {% csrf_token %}
+
 {% for hidden in form.hidden_fields %}
 {{ hidden }}
 {% endfor %}
@@ -25,20 +28,27 @@
 {{ field.help_text }}
 {{ field }} <br />
 {% endfor %}
+-->
+<!-- end -->
+Enter your query: <br />
+<input id='id_mysqlquery' type='text' size='100' name='mysqlquery'>
+<br />
+<input type="submit" name="submit" value="Submit Query" />
+<br />
+</form>
 
-<textarea rows='15' cols='80' readonly>
+<br />
 {% if employees %}
-Employee Number | First Name | Last Name | Gender
+Employee Number | First Name | Last Name | Gender <br />
 {% for employee in employees %}
-{{ employee.emp_no }} {{ employee.first_name }} {{ employee.last_name }} {{ employee.gender }}
+{{ employee.emp_no }} {{ employee.first_name }} {{ employee.last_name }} {{ employee.gender }} <br />
 {% endfor %}
 {% else %}
-No matching records found.
+No matching records found. <br />
 {% endif %}
-</textarea>
+<br />
 
-<input type="submit" name="submit" value="Create Employee" />
-</form>
+
 </body>
 
 </html>

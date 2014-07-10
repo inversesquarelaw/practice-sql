@@ -53,22 +53,21 @@ def add_employee(request):
     #render the form with error message (if any).
     return render_to_response('mydbapp/add_employee.html', {'form': form}, context)
 
-def get_employee(request):
-    #get context from form
-    context = RequestContext(request)
 
-    #a http post?
+def get_employee(request):
+    context = RequestContext(request)
+    #query_data = None
+    query_data = Employees.objects.order_by('emp_no')[:10]
+    context_dict = {'employees': query_data}
+
     if request.method == 'POST':
         form = EmployeeForm(request.POST)
 
         #have we been provide with a valid form?
         if form.is_valid():
-            #save new employee to the database
-            form.save(commit=True)
+            query_data = Employees.objects.order_by('emp_no')[:10]
 
-            #now call the index() view
-            #The user will be shown the homepage
-            return index(request)
+            return get_employee(request)
         else:
             #the supplied form contained errors - just print them to the terminal
             print form.errors
@@ -76,9 +75,8 @@ def get_employee(request):
         #if the request was not a POST, display the form to enter details.
         form = EmployeeForm
 
-    #bad form (or form details), no form supplied...
-    #render the form with error message (if any).
-    return render_to_response('mydbapp/add_employee.html', {'form': form}, context)
+    return render_to_response('mydbapp/get_employee.html', context_dict, context)
+
 
 def about(request):
     return HttpResponse("ABOUT PAGE! <a href='/mydbapp/'>Index</a>")

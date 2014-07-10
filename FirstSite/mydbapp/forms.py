@@ -20,12 +20,7 @@ class EmployeeForm(forms.ModelForm):
         fields = '__all__'
 
 class EmployeeGetForm(forms.ModelForm):
-    emp_no      = forms.IntegerField(help_text="Enter employee number: ")
-    birth_date  = forms.DateField(help_text="Enter birth date: ")
-    first_name  = forms.CharField(max_length=14, help_text="Enter frist name: ")
-    last_name   = forms.CharField(max_length=16, help_text="Enter last name: ")
-    gender      = forms.CharField(max_length=1,widget=forms.Select(choices=GENDER_CHOICES), help_text="Select gender: ")
-    hire_date   = forms.DateField(help_text="Enter hire date: ")
+    query = forms.CharField(help_text="Enter mysql query: ")
     class Meta:
         model = Employees
         fields = '__all__'
